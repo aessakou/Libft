@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_split.c                                         :+:      :+:    :+:   */
+/*   ft_split.c                                      :+: :+:         :+:       :+:  :+:  :+:      */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aessakou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/11 23:32:06 by aessakou          #+#    #+#             */
-/*   Updated: 2021/11/11 23:32:10 by aessakou         ###   ########.fr       */
+/*   Updated: 2021/11/13 19:40:50 by aessakou          #######  ########  ########       ###.ma   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,31 @@ static int  ft_countword(char *s, char c)
     return (count);
 }
 
-static char **ft_getwords(char **split, char *s, char c)
+static char **ft_alloc(char **split, char *s, char c, int words)
+{
+	int	i;
+	int	j;
+	int	k;
+	
+	i = 0;
+	k = 0;
+	while (s[i] && k < words)
+	{
+		j = 0;
+		while (s[i] == c)
+			i++;
+		while (s[i] != c && s[i])
+		{
+			j++;
+			i++;
+		}
+		split[k] =(char *)malloc((j + 1) * sizeof(char));
+		k++;
+	}
+	return (split);
+}
+
+static char **ft_getwords(char **split, char *s, char c, int words)
 {
 	int	i;
 	int	j;
@@ -46,7 +70,7 @@ static char **ft_getwords(char **split, char *s, char c)
 
 	i = 0;
 	j = 0;
-	while (s[i])
+	while (s[i] && j < words)
 	{
 		while (s[i] == c)
 			i++;
@@ -74,6 +98,8 @@ char    **ft_split(char const *s, char c)
     split = (char **)malloc(i * sizeof(char *));
     if (!split)
         return (NULL);
-	split = ft_getwords(split, (char *)s, c);
+    split = ft_alloc(split, (char *)s, c, i);
+    split = ft_getwords(split, (char *)s, c, i);
+    split[i] = NULL;
     return (split);
 }
