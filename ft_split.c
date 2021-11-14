@@ -57,6 +57,11 @@ static char **ft_alloc(char **split, char *s, char c, int words)
 			i++;
 		}
 		split[k] =(char *)malloc((j + 1) * sizeof(char));
+		if (split[k] == NULL)
+		{
+			free(split);
+			return (NULL);
+		}
 		k++;
 	}
 	return (split);
@@ -74,9 +79,9 @@ static char **ft_getwords(char **split, char *s, char c, int words)
 	{
 		while (s[i] == c)
 			i++;
-		k = 0;
 		while (s[i] != c && s[i])
 		{
+			k = 0;
 			split[j][k] = s[i];
 			k++;
 			i++;
@@ -99,6 +104,8 @@ char    **ft_split(char const *s, char c)
     if (!split)
         return (NULL);
     split = ft_alloc(split, (char *)s, c, i - 1);
+	if (!split)
+		return (NULL);
     split = ft_getwords(split, (char *)s, c, i - 1);
     split[i - 1] = NULL;
     return (split);
