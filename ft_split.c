@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_split.c                                      :+: :+:         :+:       :+:  :+:  :+:      */
+/*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aessakou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/11 23:32:06 by aessakou          #+#    #+#             */
-/*   Updated: 2021/11/13 19:40:50 by aessakou          #######  ########  ########       ###.ma   */
+/*   Created: 2021/11/14 16:36:59 by aessakou          #+#    #+#             */
+/*   Updated: 2021/11/14 16:37:07 by aessakou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,16 @@ static int  ft_countword(char *s, char c)
     return (count);
 }
 
+static void	ft_free(char **split, int i)
+{
+	while (split[i])
+	{
+		free(split);
+		i--;
+	}
+	free(split);
+}
+
 static char **ft_alloc(char **split, char *s, char c, int words)
 {
 	int	i;
@@ -57,6 +67,11 @@ static char **ft_alloc(char **split, char *s, char c, int words)
 			i++;
 		}
 		split[k] =(char *)malloc((j + 1) * sizeof(char));
+		if (!split[k])
+		{
+			ft_free(split, k - 1);
+			return (NULL);
+		}
 		k++;
 	}
 	return (split);
@@ -101,6 +116,8 @@ char    **ft_split(char const *s, char c)
     if (!split)
         return (NULL);
     split = ft_alloc(split, (char *)s, c, i - 1);
+	if (!split)
+		return (NULL);
     split = ft_getwords(split, (char *)s, c, i - 1);
     split[i - 1] = NULL;
     return (split);
