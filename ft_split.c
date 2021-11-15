@@ -3,39 +3,39 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aessakou <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: aessakou <aessakou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/14 16:36:59 by aessakou          #+#    #+#             */
-/*   Updated: 2021/11/14 16:37:07 by aessakou         ###   ########.fr       */
+/*   Updated: 2021/11/14 22:35:47 by aessakou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int  ft_countword(char *s, char c)
+static int	ft_countword(char *s, char c)
 {
-    int i;
-    int j;
-    int count;
+	int	i;
+	int	j;
+	int	count;
 
-    i = 0;
-    j = 0;
-    count = 1;
-    while (s[i] == c)
-        i++;
-    while (s[i])
-    {
-        while (s[i] == c && s[i])
-        {
-            i++;
-            if (!s[i])
-                return (count);
-            if (s[i] != c)
-                count++;
-        }
-        i++;
-    }
-    return (count);
+	i = 0;
+	j = 0;
+	count = 1;
+	while (s[i] == c)
+		i++;
+	while (s[i])
+	{
+		while (s[i] == c && s[i])
+		{
+			i++;
+			if (!s[i])
+				return (count);
+			if (s[i] != c)
+				count++;
+		}
+		i++;
+	}
+	return (count);
 }
 
 static void	ft_free(char **split, int i)
@@ -48,12 +48,12 @@ static void	ft_free(char **split, int i)
 	free(split);
 }
 
-static char **ft_alloc(char **split, char *s, char c, int words)
+static char	**ft_alloc(char **split, char *s, char c, int words)
 {
 	int	i;
 	int	j;
 	int	k;
-	
+
 	i = 0;
 	k = 0;
 	while (s[i] && k < words)
@@ -66,7 +66,7 @@ static char **ft_alloc(char **split, char *s, char c, int words)
 			j++;
 			i++;
 		}
-		split[k] =(char *)malloc((j + 1) * sizeof(char));
+		split[k] = (char *) malloc((j + 1) * sizeof(char));
 		if (!split[k])
 		{
 			ft_free(split, k - 1);
@@ -77,7 +77,7 @@ static char **ft_alloc(char **split, char *s, char c, int words)
 	return (split);
 }
 
-static char **ft_getwords(char **split, char *s, char c, int words)
+static char	**ft_getwords(char **split, char *s, char c, int words)
 {
 	int	i;
 	int	j;
@@ -104,21 +104,21 @@ static char **ft_getwords(char **split, char *s, char c, int words)
 	return (split);
 }
 
-char    **ft_split(char const *s, char c)
+char	**ft_split(char const *s, char c)
 {
-    int     i;
-    char    **split;
+	int		i;
+	char	**split;
 
-    if (!s)
-        return (NULL);
-    i = ft_countword((char *)s, c) + 1;
-    split = (char **)malloc(i * sizeof(char *));
-    if (!split)
-        return (NULL);
-    split = ft_alloc(split, (char *)s, c, i - 1);
+	if (!s)
+		return (NULL);
+	i = ft_countword((char *)s, c) + 1;
+	split = (char **)malloc(i * sizeof(char *));
 	if (!split)
 		return (NULL);
-    split = ft_getwords(split, (char *)s, c, i - 1);
-    split[i - 1] = NULL;
-    return (split);
+	split = ft_alloc(split, (char *)s, c, i - 1);
+	if (!split)
+		return (NULL);
+	split = ft_getwords(split, (char *)s, c, i - 1);
+	split[i - 1] = NULL;
+	return (split);
 }

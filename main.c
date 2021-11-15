@@ -1,9 +1,13 @@
 
 #include "libft.h"
 
-int main(void)
+int	main(void)
 {
-	//char *p = ft_strrchr("\0", 'n');
-	printf("%d\n", ft_atoi("2147483647"));
+	char *p = "\0aa\0bbb";
+	char **ptr = ft_split(p, '\0');
+	while (*ptr)
+	{
+		printf("%s\n", *ptr++);
+	}
 	return (0);
 }

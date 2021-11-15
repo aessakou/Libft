@@ -1,35 +1,62 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aessakou <aessakou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/06 12:57:21 by aessakou          #+#    #+#             */
-/*   Updated: 2021/11/14 21:55:25 by aessakou         ###   ########.fr       */
+/*   Created: 2021/11/14 17:02:49 by aessakou          #+#    #+#             */
+/*   Updated: 2021/11/14 20:55:50 by aessakou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include "libft.h"
 
-char	*ft_strdup(const char *src)
+static int	ft_getlen(long int n)
 {
-	int		i;
-	char	*str;
+	int	i;
 
 	i = 0;
-	while (src[i])
+	if (n == 0)
+		return (1);
+	if (n < 0)
+	{
 		i++;
-	str = (char *) malloc((i + 1) * sizeof(char));
+		n *= -1;
+	}
+	while (n)
+	{
+		n /= 10;
+		i++;
+	}
+	return (i);
+}
+
+char	*ft_itoa(int n)
+{
+	int			i;
+	long int	m;
+	char		*str;
+
+	m = n;
+	i = ft_getlen(m);
+	str = (char *)malloc((i + 1) * sizeof(char));
 	if (!str)
 		return (NULL);
-	i = 0;
-	while (src[i] != 0)
+	str[i] = 0;
+	if (m < 0)
 	{
-		str[i] = (char)src[i];
-		i++;
-		if (src[i] == 0)
-			str[i] = 0;
+		str[0] = '-';
+		m *= -1;
+	}
+	i--;
+	if (m == 0)
+		str[i] = '0';
+	while (m)
+	{
+		str[i] = (m % 10) + 48;
+		m /= 10;
+		i--;
 	}
 	return (str);
 }
