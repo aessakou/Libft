@@ -6,16 +6,16 @@
 /*   By: aessakou <aessakou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/06 12:52:50 by aessakou          #+#    #+#             */
-/*   Updated: 2021/11/14 22:29:03 by aessakou         ###   ########.fr       */
+/*   Updated: 2021/11/16 20:40:13 by aessakou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 static int	ft_getmaxmin(int n)
 {
 	if (n == 1)
-		return (0);
-	else
 		return (-1);
+	else
+		return (0);
 }
 
 int	ft_atoi(const char *str)
@@ -39,8 +39,8 @@ int	ft_atoi(const char *str)
 	while (str[i] >= '0' && str[i] <= '9')
 	{
 		k = str[i++] - 48 + k * 10;
+		if (k > 9223372036854775807)
+			return (ft_getmaxmin(n));
 	}
-	if (k > 2147483648)
-		return (ft_getmaxmin(n));
 	return (k * n);
 }
