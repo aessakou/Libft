@@ -6,7 +6,7 @@
 /*   By: aessakou <aessakou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/14 16:36:59 by aessakou          #+#    #+#             */
-/*   Updated: 2021/11/14 22:35:47 by aessakou         ###   ########.fr       */
+/*   Updated: 2021/11/15 21:39:01 by aessakou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ static void	ft_free(char **split, int i)
 {
 	while (split[i])
 	{
-		free(split);
+		free(split[i]);
 		i--;
 	}
 	free(split);
@@ -111,6 +111,12 @@ char	**ft_split(char const *s, char c)
 
 	if (!s)
 		return (NULL);
+	if (s[0] == 0)
+	{
+		split = (char **) malloc(1 * sizeof(char *));
+		split[0] = NULL;
+		return (split);
+	}
 	i = ft_countword((char *)s, c) + 1;
 	split = (char **)malloc(i * sizeof(char *));
 	if (!split)

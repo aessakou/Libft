@@ -6,20 +6,18 @@
 /*   By: aessakou <aessakou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/06 12:57:21 by aessakou          #+#    #+#             */
-/*   Updated: 2021/11/14 21:55:25 by aessakou         ###   ########.fr       */
+/*   Updated: 2021/11/15 21:42:34 by aessakou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include "libft.h"
 
 char	*ft_strdup(const char *src)
 {
-	int		i;
+	size_t	i;
 	char	*str;
 
-	i = 0;
-	while (src[i])
-		i++;
+	i = ft_strlen(src);
 	str = (char *) malloc((i + 1) * sizeof(char));
 	if (!str)
 		return (NULL);
