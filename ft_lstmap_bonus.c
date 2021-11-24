@@ -1,26 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstnew.c                                        :+:      :+:    :+:   */
+/*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aessakou <aessakou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/21 04:19:29 by aessakou          #+#    #+#             */
-/*   Updated: 2021/11/21 04:27:07 by aessakou         ###   ########.fr       */
+/*   Created: 2021/11/21 22:40:20 by aessakou          #+#    #+#             */
+/*   Updated: 2021/11/24 01:14:48 by aessakou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "libft.h"
 
-t_list	*ft_lstnew(void *content)
+t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
-	t_list *newlst;
+	t_list	*temp;
+	t_list	*newlst;
+	int		i;
 
-	newlst = (t_list *) malloc(sizeof(t_list));
-	if (!newlst)
+	if (!lst || !f)
 		return (NULL);
-	newlst->content = content;
-	newlst->next = NULL;
+	temp = lst;
+	i = 1;
+	newlst = ft_lstnew(f(temp->content));
+	temp = temp->next;
+	while (temp)
+	{
+		ft_lstadd_back(&newlst, ft_lstnew(f(temp->content)));
+		if (!newlst)
+		{
+			while (i--)
+				ft_lstdelone(newlst, del);
+			return (NULL);
+		}
+		i++;
+		temp = temp->next;
+	}
 	return (newlst);
 }

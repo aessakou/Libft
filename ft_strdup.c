@@ -6,7 +6,7 @@
 /*   By: aessakou <aessakou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/06 12:57:21 by aessakou          #+#    #+#             */
-/*   Updated: 2021/11/15 21:42:34 by aessakou         ###   ########.fr       */
+/*   Updated: 2021/11/24 01:46:54 by aessakou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,7 @@ char	*ft_strdup(const char *src)
 	{
 		str[i] = (char)src[i];
 		i++;
-		if (src[i] == 0)
-			str[i] = 0;
 	}
+	str[i] = 0;
 	return (str);
 }

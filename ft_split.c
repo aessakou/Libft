@@ -6,7 +6,7 @@
 /*   By: aessakou <aessakou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/21 04:39:31 by aessakou          #+#    #+#             */
-/*   Updated: 2021/11/21 04:39:35 by aessakou         ###   ########.fr       */
+/*   Updated: 2021/11/24 01:39:01 by aessakou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,27 +18,24 @@ static int	ft_countword(char *s, char c)
 	int	count;
 
 	i = 0;
-	count = 1;
-	while (s[i] == c)
-		i++;
+	count = 0;
 	while (s[i])
 	{
 		while (s[i] == c && s[i])
+			i++;
+		while (s[i] != c && s[i])
 		{
 			i++;
-			if (!s[i])
-				return (count);
-			if (s[i] != c)
+			if (s[i] == c || !s[i])
 				count++;
 		}
-		i++;
 	}
 	return (count);
 }
 
 static void	ft_free(char **split, int i)
 {
-	while (split[i])
+	while (i >= 0)
 	{
 		free(split[i]);
 		i--;
@@ -67,7 +64,7 @@ static char	**ft_alloc(char **split, char *s, char c, int words)
 		split[k] = (char *) malloc((j + 1) * sizeof(char));
 		if (!split[k])
 		{
-			ft_free(split, k - 1);
+			ft_free(split, k);
 			return (NULL);
 		}
 		k++;

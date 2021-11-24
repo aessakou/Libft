@@ -6,7 +6,7 @@
 /*   By: aessakou <aessakou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/10 14:07:17 by aessakou          #+#    #+#             */
-/*   Updated: 2021/11/14 22:16:05 by aessakou         ###   ########.fr       */
+/*   Updated: 2021/11/22 22:30:38 by aessakou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,12 +54,12 @@ char	*ft_strtrim(char const *s1, char const *set)
 
 	str1 = (char *)s1;
 	str2 = (char *)set;
-	if (!str1 || !str2)
+	if (!s1 || !set)
 		return (NULL);
 	start = ft_checkstart(str1, str2);
 	end = ft_checkend(str1, str2);
-	if (start >= end)
-		return (ft_strdup(""));
+	if (start == ft_strlen(str1))
+		return (ft_calloc(1, sizeof(char)));
 	trim = (char *)malloc(sizeof(char) * (end - start + 1));
 	if (trim == NULL)
 		return (NULL);

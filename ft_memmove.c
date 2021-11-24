@@ -6,23 +6,22 @@
 /*   By: aessakou <aessakou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/06 12:56:37 by aessakou          #+#    #+#             */
-/*   Updated: 2021/11/14 21:02:57 by aessakou         ###   ########.fr       */
+/*   Updated: 2021/11/24 01:15:26 by aessakou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-//#include <string.h>
 
 void	*ft_memmove(void *dst, const void *src, size_t len)
 {
-	char		*str1;
-	const char	*str2;
-	size_t		i;
+	char	*str1;
+	char	*str2;
+	size_t	i;
 
-	str1 = dst;
-	str2 = src;
+	str1 = (char *)dst;
+	str2 = (char *)src;
 	i = 0;
-	if (dst == NULL && src == NULL)
+	if (!dst && !src)
 		return (NULL);
 	else if (str1 > str2)
 	{
@@ -39,11 +38,3 @@ void	*ft_memmove(void *dst, const void *src, size_t len)
 	}
 	return (dst);
 }
-/*int main()
-{
-    char str1[] = "hey anyone";
-    printf("Myft:%s\n", ft_memmove(str1, str1 + 2, 4));
-    char str2[] = "hey anyone";
-    printf("Orig:%s\n", memmove(str2, str2 + 2, 4));
-    return 0;
-}*/
