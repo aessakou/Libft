@@ -6,7 +6,7 @@
 /*   By: aessakou <aessakou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/21 04:39:31 by aessakou          #+#    #+#             */
-/*   Updated: 2021/11/24 01:39:01 by aessakou         ###   ########.fr       */
+/*   Updated: 2021/12/09 01:57:43 by aessakou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,12 +106,6 @@ char	**ft_split(char const *s, char c)
 
 	if (!s)
 		return (NULL);
-	if (s[0] == 0)
-	{
-		split = (char **) malloc(1 * sizeof(char *));
-		split[0] = NULL;
-		return (split);
-	}
 	i = ft_countword((char *)s, c) + 1;
 	split = (char **)malloc(i * sizeof(char *));
 	if (!split)
