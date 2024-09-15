@@ -31,3 +31,16 @@ Here’s a more detailed breakdown of the three parts of the Libft project, focu
 &nbsp;&nbsp;&nbsp;&nbsp;• Foundation for future projects: Libft can be reused as a personal utility library, giving you a toolkit to solve common problems quickly.
 
 &nbsp;&nbsp;&nbsp;&nbsp;• Solid experience in debugging, testing, and ensuring code compliance with standard C norms and handling various edge cases in programming.
+
+## **Resources :**
+
+### **Makefile:**
+https://makefiletutorial.com/
+
+### **Libc functions:**
+Just use the command `man` + `FUNCTION_NAME` to display the manual documentation.
+Example: for `strlen` type `man strken` in the terminal.
+for more check this link: https://www.geeksforgeeks.org/man-command-in-linux-with-examples/
+
+### **Linked Lists:**
+https://www.w3schools.com/dsa/dsa_theory_linkedlists.php 
