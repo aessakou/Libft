@@ -39,7 +39,9 @@ https://makefiletutorial.com/
 
 ### **Libc functions:**
 Just use the command `man` + `FUNCTION_NAME` to display the manual documentation.
+
 Example: for `strlen` type `man strken` in the terminal.
+
 for more check this link: https://www.geeksforgeeks.org/man-command-in-linux-with-examples/
 
 ### **Linked Lists:**
