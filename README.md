@@ -27,5 +27,7 @@ Here’s a more detailed breakdown of the three parts of the Libft project, focu
 
 ## **Overall Benefits:**
 &nbsp;&nbsp;&nbsp;&nbsp;• Improved understanding of the C programming language, memory management, and data structures.
+
 &nbsp;&nbsp;&nbsp;&nbsp;• Foundation for future projects: Libft can be reused as a personal utility library, giving you a toolkit to solve common problems quickly.
+
 &nbsp;&nbsp;&nbsp;&nbsp;• Solid experience in debugging, testing, and ensuring code compliance with standard C norms and handling various edge cases in programming.
