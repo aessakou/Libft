@@ -40,9 +40,9 @@ https://makefiletutorial.com/
 ### **Libc functions:**
 Just use the command `man` + `FUNCTION_NAME` to display the manual documentation.
 
-Example: for `strlen` type `man strken` in the terminal.
+Example: for `strlen` type `man strlen` in the terminal.
 
-for more check this link: https://www.geeksforgeeks.org/man-command-in-linux-with-examples/
+For more about `man` check this link: https://www.geeksforgeeks.org/man-command-in-linux-with-examples/
 
 ### **Linked Lists:**
 https://www.w3schools.com/dsa/dsa_theory_linkedlists.php 
